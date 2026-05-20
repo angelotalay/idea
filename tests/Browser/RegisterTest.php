@@ -7,4 +7,5 @@ it("registers a user", function () {
         ->type("password", "passwordtest1")
         ->click("Create Account")
         ->assertPathIs("/");
+    $this->assertAuthenticated();
 });

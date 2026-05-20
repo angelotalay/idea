@@ -13,5 +13,14 @@
         <main>
             {{ $slot }}
         </main>
+
+        @session("success")
+            <div
+                id="session-success"
+                class="bg-primary absolute right-4 bottom-4 rounded-lg px-4 py-3"
+            >
+                {{ $value }}
+            </div>
+        @endsession
     </body>
 </html>

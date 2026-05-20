@@ -1,8 +1,32 @@
 <?php
 
+use App\Models\User;
 
-test('', function () {
-    $response = $this->get('/');//
+it('Logs in a user', function () {
+    $user = User::factory()->create([
+        "password" => "testpassword"
+    ]);
 
-    $response->assertStatus(200);
+    visit("/login")
+        ->fill("email", $user->email)
+        ->fill("password", "testpassword")
+        ->click("@login-button")
+        ->assertPathIs("/");
+
+    $this->assertAuthenticated();
 });
+
+it('Logs out a user', function () {
+    $user = User::factory()->create([
+        "password" => "testpassword"
+    ]);
+
+    $this->actingAs($user);
+
+    visit("/")->click("@logout-button");
+
+    $this->assertGuest();
+});
+
+
+
