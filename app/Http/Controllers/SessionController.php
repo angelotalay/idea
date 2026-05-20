@@ -32,7 +32,7 @@ class SessionController extends Controller
         };
 
         $request->session()->regenerate();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'You are logged in!');
     }
 
 
@@ -42,6 +42,6 @@ class SessionController extends Controller
     public function destroy()
     {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'You are logged out!');
     }
 }

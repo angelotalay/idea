@@ -16,7 +16,9 @@
                     required
                 />
                 <div class="flex w-full justify-center">
-                    <button class="btn" type="submit">Login</button>
+                    <button class="btn" type="submit" data-test="login-button">
+                        Login
+                    </button>
                 </div>
             </div>
         </form>

@@ -7,7 +7,9 @@
             <form method="POST" action="/logout">
                 @csrf
                 @method("DELETE")
-                <button type="submit" class="btn">Logout</button>
+                <button type="submit" class="btn" data-test="logout-button">
+                    Logout
+                </button>
             </form>
         @endauth
 
