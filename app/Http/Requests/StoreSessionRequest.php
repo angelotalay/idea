@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -23,8 +25,8 @@ class StoreSessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "email" => ["required", "email", "exists:users,email"],
-            "password" => ["required", "string"],
+            'email' => ['required', 'email', 'exists:users,email'],
+            'password' => ['required', 'string'],
         ];
     }
 }
