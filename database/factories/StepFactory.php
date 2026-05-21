@@ -12,9 +12,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class StepFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Return default attributes for a Step model used by the factory.
      *
-     * @return array<string, mixed>
+     * The array contains:
+     * - 'idea_id': a factory for an associated Idea model.
+     * - 'description': a generated paragraph string.
+     * - 'completed': `false` by default.
+     *
+     * @return array<string,mixed> Associative array of default Step attributes.
      */
     public function definition(): array
     {

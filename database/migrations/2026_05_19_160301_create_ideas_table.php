@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Create the `ideas` database table with its columns and constraints.
+     *
+     * The table includes an auto-incrementing primary key `id`, a `user_id` foreign key
+     * referencing `users` with cascade delete, `title`, nullable `description`, a `status`
+     * column defaulting to 'pending', a JSON `links` column defaulting to an empty array,
+     * nullable `image`, and `created_at`/`updated_at` timestamps.
      */
     public function up(): void
     {

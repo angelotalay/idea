@@ -11,11 +11,22 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisteredUserController extends Controller
 {
+    /**
+     * Show the user registration form.
+     *
+     * @return \Illuminate\View\View The registration view for creating a new account.
+     */
     public function create()
     {
         return view('auth.register');
     }
 
+    /**
+     * Create a new user from validated input, authenticate them, and redirect to the home page.
+     *
+     * @param \App\Http\Requests\StoreUserRequest $request The validated request containing `name`, `email`, and `password`.
+     * @return \Illuminate\Http\RedirectResponse Redirect to `'/'` with session flash key `success` set to `"Account created successfully!"`.
+     */
     public function store(StoreUserRequest $request)
     {
         // Validate request - done through the request class

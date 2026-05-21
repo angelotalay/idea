@@ -22,9 +22,9 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * Get the attributes that should be cast.
+     * Define the model's attribute casting rules.
      *
-     * @return array<string, string>
+     * @return array<string, string> Associative array mapping attribute names to their cast types.
      */
     #[Override]
     protected function casts(): array
@@ -35,6 +35,11 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the ideas authored by the user.
+     *
+     * @return HasMany A has-many Eloquent relation for the user's Idea models.
+     */
     public function ideas(): HasMany
     {
         return $this->hasMany(Idea::class);
