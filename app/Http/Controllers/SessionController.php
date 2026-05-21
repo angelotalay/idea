@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class SessionController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Placeholder for the resource index action; intentionally left unimplemented.
+     *
+     * @return void
      */
     public function index(): void
     {
@@ -25,6 +27,12 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
+    /**
+     * Authenticate the user with the provided email and password and redirect based on the result.
+     *
+     * @param \App\Http\Requests\StoreSessionRequest $request Validated request containing `email` and `password`.
+     * @return \Illuminate\Http\RedirectResponse A redirect response to the previous page with an error and preserved input when authentication fails, or to `/` with a `success` flash message when authentication succeeds.
+     */
     public function store(StoreSessionRequest $request)
     {
         $credentials = $request->only('email', 'password');
@@ -38,8 +46,10 @@ class SessionController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
+         * Log the current user out and redirect to the application root with a success message.
+         *
+         * @return \Illuminate\Http\RedirectResponse A redirect response to `'/'` with a `success` flash message of "You are logged out!".
+         */
     public function destroy()
     {
         Auth::logout();

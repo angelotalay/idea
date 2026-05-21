@@ -18,6 +18,11 @@ class Step extends Model
         'completed' => false,
     ];
 
+    /**
+     * Retrieve the Idea that this Step belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo The relationship instance linking this Step to its Idea.
+     */
     public function idea(): BelongsTo
     {
         return $this->belongsTo(Idea::class);

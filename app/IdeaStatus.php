@@ -10,6 +10,11 @@ enum IdeaStatus: string
     case IN_PROGRESS = 'in_progress';
     case COMPLETED = 'completed';
 
+    /**
+     * Get the human-readable label for the enum case.
+     *
+     * @return string The label corresponding to the current status: "Pending", "In Progress", or "Completed".
+     */
     public function label(): string
     {
         return match ($this) {

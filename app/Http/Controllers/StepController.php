@@ -18,7 +18,9 @@ class StepController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a form for creating a new Step resource.
+     *
+     * Presents the UI for entering data required to create a new Step.
      */
     public function create(): void
     {
@@ -26,7 +28,9 @@ class StepController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Persist a newly created Step resource using data from the provided request.
+     *
+     * @param Request $request The incoming HTTP request containing attributes for the new Step.
      */
     public function store(Request $request): void
     {
@@ -34,7 +38,9 @@ class StepController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Step resource.
+     *
+     * @param \App\Models\Step $step The Step model instance to display.
      */
     public function show(Step $step): void
     {
@@ -42,7 +48,9 @@ class StepController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the form for editing the given Step.
+     *
+     * @param Step $step The Step model instance to edit.
      */
     public function edit(Step $step): void
     {
@@ -50,8 +58,11 @@ class StepController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
+         * Update the given Step using data from the HTTP request.
+         *
+         * @param Request $request The HTTP request containing updated attributes for the step.
+         * @param Step $step The Step instance to be updated.
+         */
     public function update(Request $request, Step $step): void
     {
         //
