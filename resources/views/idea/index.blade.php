@@ -22,6 +22,12 @@
             <p class="text-muted-foreground text-sm">
                 Capture your thoughts. Make a plan.
             </p>
+            <button class="h-28 w-full md:h-36" id="create-idea-button">
+                <x-card class="flex h-full w-full items-center justify-center">
+                    <p class="w-full text-xl">What's the idea?</p>
+                </x-card>
+            </button>
+
             <div class="flex flex-row gap-2">
                 <a
                     href="/ideas"
@@ -71,4 +77,10 @@
             @endforelse
         </div>
     </div>
+    <x-modal id="create-idea-modal">
+        <form>
+            <p>I am a modal</p>
+            <x-form.field name="title" label="Title" />
+        </form>
+    </x-modal>
 </x-layout>

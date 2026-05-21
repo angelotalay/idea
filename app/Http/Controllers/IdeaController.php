@@ -20,11 +20,11 @@ class IdeaController extends Controller
     public function index(Request $request)
     {
         $status = $request->status;
-        if(! in_array($status, array_column(IdeaStatus::cases(), 'value'))) {
+        if (!in_array($status, array_column(IdeaStatus::cases(), 'value'))) {
             $status = null;
         }
         // Get ideas based on the status filter
-        $ideas = Auth::user()->ideas()->when($status, fn ($query, $status) => $query->where('status', $status))
+        $ideas = Auth::user()->ideas()->when($status, fn($query, $status) => $query->where('status', $status))
             ->get();
 
 
@@ -59,9 +59,11 @@ class IdeaController extends Controller
      *
      * @param \App\Models\Idea $idea The idea instance to display.
      */
-    public function show(Idea $idea): void
+    public function show(Idea $idea)
     {
-        //
+        return view("idea.show", [
+            "idea" => $idea
+        ]);
     }
 
     /**
@@ -90,8 +92,11 @@ class IdeaController extends Controller
      *
      * @param \App\Models\Idea $idea The idea to delete.
      */
-    public function destroy(Idea $idea): void
+    public function destroy(Idea $idea)
     {
-        //
+        // Authorise first!
+
+        $idea->delete();
+        return to_route("idea.index");
     }
 }
