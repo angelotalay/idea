@@ -19,9 +19,14 @@ class IdeaController extends Controller
      */
     public function index(Request $request)
     {
+        $status = $request->status;
+        if(! in_array($status, array_column(IdeaStatus::cases(), 'value'))) {
+            $status = null;
+        }
         // Get ideas based on the status filter
-        $ideas = Auth::user()->ideas()->when($request->status, fn ($query, $status) => $query->where('status', $status))
+        $ideas = Auth::user()->ideas()->when($status, fn ($query, $status) => $query->where('status', $status))
             ->get();
+
 
         return view(
             'idea.index',
