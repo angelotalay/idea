@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Step;
@@ -10,47 +12,58 @@ class StepController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): void
     {
         //
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a form for creating a new Step resource.
+     *
+     * Presents the UI for entering data required to create a new Step.
      */
-    public function create()
+    public function create(): void
     {
         //
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Persist a newly created Step resource using data from the provided request.
+     *
+     * @param Request $request The incoming HTTP request containing attributes for the new Step.
      */
-    public function store(Request $request)
+    public function store(Request $request): void
     {
         //
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Step resource.
+     *
+     * @param \App\Models\Step $step The Step model instance to display.
      */
-    public function show(Step $step)
+    public function show(Step $step): void
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the form for editing the given Step.
+     *
+     * @param Step $step The Step model instance to edit.
      */
-    public function edit(Step $step)
+    public function edit(Step $step): void
     {
         //
     }
 
     /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Step $step)
+         * Update the given Step using data from the HTTP request.
+         *
+         * @param Request $request The HTTP request containing updated attributes for the step.
+         * @param Step $step The Step instance to be updated.
+         */
+    public function update(Request $request, Step $step): void
     {
         //
     }
@@ -58,7 +71,7 @@ class StepController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Step $step)
+    public function destroy(Step $step): void
     {
         //
     }
