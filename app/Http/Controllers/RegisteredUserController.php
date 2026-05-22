@@ -6,15 +6,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Show the user registration form.
      *
-     * @return \Illuminate\View\View The registration view for creating a new account.
+     * @return View The registration view for creating a new account.
      */
     public function create()
     {
@@ -24,8 +26,8 @@ class RegisteredUserController extends Controller
     /**
      * Create a new user from validated input, authenticate them, and redirect to the home page.
      *
-     * @param \App\Http\Requests\StoreUserRequest $request The validated request containing `name`, `email`, and `password`.
-     * @return \Illuminate\Http\RedirectResponse Redirect to `'/'` with session flash key `success` set to `"Account created successfully!"`.
+     * @param  StoreUserRequest  $request  The validated request containing `name`, `email`, and `password`.
+     * @return RedirectResponse Redirect to `'/'` with session flash key `success` set to `"Account created successfully!"`.
      */
     public function store(StoreUserRequest $request)
     {

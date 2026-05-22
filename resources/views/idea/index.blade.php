@@ -15,6 +15,7 @@
     /** @var Collection<int, IdeaStatus> $statuses */
 @endphp
 
+@vite(["resources/js/modal.js"])
 <x-layout title="Ideas">
     <div class="flex w-full flex-col gap-6">
         <section class="space-y-2">
@@ -53,8 +54,20 @@
         >
             @forelse ($ideas as $idea)
                 <x-card>
-                    <div class="flex flex-col gap-4">
-                        <a href="ideas/{{ $idea->id }}">
+                    <div class="flex flex-col justify-center gap-4">
+                        @if ($idea->image)
+                            <div
+                                class="-t-4 -mx-4 -mt-4 mb-4 overflow-hidden rounded-t-lg"
+                            >
+                                <img
+                                    src="{{ asset("storage/" . $idea->image) }}"
+                                    alt=""
+                                    class="h-auto w-full object-cover"
+                                />
+                            </div>
+                        @endif
+
+                        <a href="/ideas/{{ $idea->id }}">
                             <h3 class="text-3xl text-white hover:underline">
                                 {{ $idea->title }}
                             </h3>
@@ -78,9 +91,10 @@
         </div>
     </div>
     <x-modal id="create-idea-modal">
-        <form>
-            <p>I am a modal</p>
-            <x-form.field name="title" label="Title" />
-        </form>
+        <x-form.create-idea-form
+            :idea="new Idea()"
+            :idea-status="$statuses"
+            :route-action="route('idea.store')"
+        />
     </x-modal>
 </x-layout>

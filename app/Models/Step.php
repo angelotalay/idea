@@ -21,7 +21,7 @@ class Step extends Model
     /**
      * Retrieve the Idea that this Step belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo The relationship instance linking this Step to its Idea.
+     * @return BelongsTo The relationship instance linking this Step to its Idea.
      */
     public function idea(): BelongsTo
     {

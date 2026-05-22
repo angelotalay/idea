@@ -30,7 +30,7 @@ class Idea extends Model
     /**
      * Defines the inverse relationship indicating this Idea belongs to a User.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo The owning User relationship.
+     * @return BelongsTo The owning User relationship.
      */
     public function user(): BelongsTo
     {
@@ -40,7 +40,7 @@ class Idea extends Model
     /**
      * Define the one-to-many relationship between an Idea and its Step models.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany The relationship instance for the idea's steps.
+     * @return HasMany The relationship instance for the idea's steps.
      */
     public function steps(): HasMany
     {
@@ -50,7 +50,7 @@ class Idea extends Model
     /**
      * Compute counts of the given user's ideas grouped by status and include a total.
      *
-     * @param User $user The user whose ideas will be counted.
+     * @param  User  $user  The user whose ideas will be counted.
      * @return Collection<string,int> A collection mapping each `IdeaStatus` value to its count (missing statuses map to `0`), with an additional `'all'` key containing the total idea count.
      */
     public static function getStatusCounts(User $user): Collection

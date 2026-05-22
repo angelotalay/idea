@@ -6,6 +6,6 @@ it('registers a user', function () {
         ->type('email', 'john@example.com')
         ->type('password', 'passwordtest1')
         ->click('Create Account')
-        ->assertPathIs('/');
+        ->assertPathIs('/ideas');
     $this->assertAuthenticated();
 });

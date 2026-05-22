@@ -30,7 +30,7 @@ class StepController extends Controller
     /**
      * Persist a newly created Step resource using data from the provided request.
      *
-     * @param Request $request The incoming HTTP request containing attributes for the new Step.
+     * @param  Request  $request  The incoming HTTP request containing attributes for the new Step.
      */
     public function store(Request $request): void
     {
@@ -40,7 +40,7 @@ class StepController extends Controller
     /**
      * Display the specified Step resource.
      *
-     * @param \App\Models\Step $step The Step model instance to display.
+     * @param  Step  $step  The Step model instance to display.
      */
     public function show(Step $step): void
     {
@@ -50,7 +50,7 @@ class StepController extends Controller
     /**
      * Display the form for editing the given Step.
      *
-     * @param Step $step The Step model instance to edit.
+     * @param  Step  $step  The Step model instance to edit.
      */
     public function edit(Step $step): void
     {
@@ -58,14 +58,19 @@ class StepController extends Controller
     }
 
     /**
-         * Update the given Step using data from the HTTP request.
-         *
-         * @param Request $request The HTTP request containing updated attributes for the step.
-         * @param Step $step The Step instance to be updated.
-         */
-    public function update(Request $request, Step $step): void
+     * Update the given Step using data from the HTTP request.
+     *
+     * @param  Request  $request  The HTTP request containing updated attributes for the step.
+     * @param  Step  $step  The Step instance to be updated.
+     */
+    public function update(Request $request, Step $step)
     {
-        //
+        // Needs authorisation
+        $step->update([
+            'completed' => ! $step->completed,
+        ]);
+
+        return back();
     }
 
     /**

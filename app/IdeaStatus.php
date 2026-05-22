@@ -23,4 +23,22 @@ enum IdeaStatus: string
             self::COMPLETED => 'Completed',
         };
     }
+
+    public static function values(): array
+    {
+        return [
+            self::PENDING->value,
+            self::IN_PROGRESS->value,
+            self::COMPLETED->value,
+        ];
+    }
+
+    public static function labels(): array
+    {
+        return [
+            self::PENDING->label(),
+            self::IN_PROGRESS->label(),
+            self::COMPLETED->label(),
+        ];
+    }
 }

@@ -4,6 +4,7 @@
     </div>
     <div class="flex flex-row items-center gap-4">
         @auth
+            <a href="/profile" class="btn">Edit Profile</a>
             <form method="POST" action="/logout">
                 @csrf
                 @method("DELETE")
